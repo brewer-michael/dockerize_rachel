@@ -22,6 +22,9 @@ RUN a2enmod rewrite
 
 #Copy local files
 #RUN copy src /var/www/html
+
+#Clean folder from previous build(s)
+RUN rm -R /var/www/html/rachel
 RUN  git clone https://github.com/worldpossible/contentshell.git /var/www/html/rachel
 RUN chown -R www-data:www-data /var/www
 
