@@ -18,3 +18,7 @@ Update contentshell to use the backend from our mysql container
 
 Once basic functionality is operational build out features to take advantage of Docker Swarm
 Utilize buildx to make Docker image flexible for ARM, AMD64, etc.
+
+## Instructions
+Run `docker-compose up --build`
+Upon successful build web interface will be at http://localhost:8000
