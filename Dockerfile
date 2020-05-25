@@ -2,7 +2,8 @@ FROM php:7-apache
 
 MAINTAINER brewermichael <design@brewerwebdesign.com>
 
-RUN mkdir /var/www/public
+#If copying files from local folder
+#RUN mkdir /var/www/public
 RUN apt-get update && apt-get --assume-yes upgrade
 RUN apt-get --assume-yes install sqlite python3 python3-pip git
 
@@ -19,7 +20,9 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN a2enmod rewrite
 
-RUN  git clone https://github.com/worldpossible/contentshell.git /var/www/html
+#Copy local files
+#RUN copy src /var/www/html
+RUN  git clone https://github.com/worldpossible/contentshell.git /var/www/html/rachel
 RUN chown -R www-data:www-data /var/www
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
