@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  mysql:
+        image: mysql:8.0
+        container_name: db
+        command: --default-authentication-plugin=mysql_native_password
+#        working_dir: /application
+        #volumes:
+        #  - .:/application
+        restart: always
+        environment:
+          - MYSQL_ROOT_PASSWORD=rachel
+          - MYSQL_DATABASE=rachel
+          #- MYSQL_USER=db_user
+          #- MYSQL_PASSWORD=.mypwd
+        ports:
+          - "8082:3306"
+        networks:
+          - app-network
+  website:
+    image: php:7-apache
+    container_name: rachelproject
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    #volumes:
+    #  - /src:/var/www/html
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql
+    environment:
+      - APP_DEBUG=true
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
