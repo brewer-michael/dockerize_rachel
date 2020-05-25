@@ -6,6 +6,7 @@ The need for an internet hub for extremely rural communities in impoverished loc
 
 Project Core
 https://github.com/worldpossible/rachelpiOS builds the environment for the webserver, website, and database framework RachelPi uses
+
 https://github.com/worldpossible/contentshell creates the frontend
 
 Docker Files
